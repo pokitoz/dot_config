@@ -1,27 +1,30 @@
-"set nocompatible              " be iMproved, required
-"filetype off                  " required
-"
-"" set the runtime path to include Vundle and initialize
-"set rtp+=~/.vim/bundle/Vundle.vim
-"call vundle#begin()
-"" " alternatively, pass a path where Vundle should install plugins
-"" "call vundle#begin('~/some/path/here')
-"" " let Vundle manage Vundle, required
-"Plugin 'VundleVim/Vundle.vim'
-"
-"
-"vPlugin 'tpope/vim-fugitive'
-"" Plugin 'scrooloose/syntastic'
-"" Plugin 'valloric/youcompleteme'
-"
-"" All of your Plugins must be added before the following line
-"call vundle#end()            " required
-"filetype plugin indent on    " required
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" " alternatively, pass a path where Vundle should install plugins
+" "call vundle#begin('~/some/path/here')
+" " let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+
+""""" Do   :PluginInstall to install the following packages or :PluginInstall <name>.vim
+
+" Plugin 'tpope/vim-fugitive'
+" Plugin 'scrooloose/syntastic'
+" Plugin 'valloric/youcompleteme'
+Plugin 'ericcurtin/CurtineIncSw.vim'
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
 
 
 "set notitle
 autocmd BufEnter * let &titlestring = ' ' . expand("%:t")             
 set title
+set titleold=
 
 " UTF8 encoding
 set encoding=utf-8
@@ -121,4 +124,24 @@ nmap <Leader>b <C-T>
 " match ExtraWhitespace /\s\+$/
 
 set cursorline
+
+set hidden
+syntax enable
+source $VIMRUNTIME/menu.vim
+set wildmenu
+set cpo-=<
+set wcm=<C-Z>
+
+"""""" Add <CR> at the end of the mapping to avoid pressing ENTER
+map <F4> :emenu <C-Z>
+map <F5> :call CurtineIncSw()<CR>
+
+nmap <S-Right> :bp<CR>
+nmap <S-Left> :bn<CR>
+nmap <Esc>[3~ :bd<CR>
+nmap ZZ :bd<CR>
+
+" these are mapped in visual mode
+vmap <S-Up> :bp<CR>
+vmap <S-Down> :bn<CR>
 
